@@ -2,7 +2,7 @@
 library(MCMCvis)
 library(rjags)
 
-load('rsamps_hot_hand_ft_re_all2.RData')
+load('./results/rsamps_hot_hand_ft_re_all2.RData')
 source('./functions/Gamma_t.R')
 
 
@@ -40,3 +40,7 @@ pHC <- (1 + exp(-(betaHC + bHC)))^(-1)
 D1 <- pHC / (pHC + pCH); mean(D1); sd(D1); quantile(D1, 0.025); quantile(D1, 0.975)
 
 D2 <- pCH / (pHC + pCH); mean(D2); sd(D2); quantile(D2, 0.025); quantile(D2, 0.975)
+
+# extra
+# mean(pHC)
+# mean(pCH)

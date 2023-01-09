@@ -28,8 +28,8 @@ update(result, n.iter = 30000)
 rsamps_hot_hand_ft_re_all2 <- coda.samples(result, parameters, n.iter = 30000, 
                                       thin = 30)
 
-save(rsamps_hot_hand_ft_re_all2, file = 'rsamps_hot_hand_ft_re_all2.RData')
-#load('rsamps_hot_hand_ft_re_all2.RData')
+save(rsamps_hot_hand_ft_re_all2, file = './results/rsamps_hot_hand_ft_re_all2.RData')
+#load('./results/rsamps_hot_hand_ft_re_all2.RData')
 
 mcmcplot(rsamps_hot_hand_ft_re_all2)
 

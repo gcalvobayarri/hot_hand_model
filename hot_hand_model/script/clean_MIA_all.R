@@ -5,8 +5,7 @@ load('./data/MIA_all.RData')
 data_shots_MIA <- s2005.PbP.MIA
 rm(s2005.PbP.MIA)
 
-# pacientes$tratamiento[pacientes$tratamiento == ""] <- "No"
-data_shots_MIA[is.na(data_shots_MIA)] <- ""
+
 data_shots_MIA$shot_distance[is.na(data_shots_MIA$shot_distance)] <- 15
 
 # with blocks

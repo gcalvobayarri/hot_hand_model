@@ -2,7 +2,7 @@
 library(MCMCvis)
 library(rjags)
 
-load('rsamps_hot_hand_ft_re_all2.RData')
+load('./results/rsamps_hot_hand_ft_re_all2.RData')
 
 beta0C <- as.vector(unlist(MCMCchains(rsamps_hot_hand_ft_re_all2, 
                                       params = 'beta0[1]', ISB = F)))

@@ -2,7 +2,7 @@
 library(MCMCvis)
 library(rjags)
 
-load('rsamps_hot_hand_ft_re_all2.RData')
+load('./results/rsamps_hot_hand_ft_re_all2.RData')
 source('./functions/Gamma_t.R')
 
 
@@ -86,7 +86,7 @@ library(ggplot2)
 ggplot(df_C, aes(x=m, fill = element_matrix)) +
   geom_density(size=1.5, alpha=.4)+ 
   theme_minimal(base_size = 20, base_line_size = 15/20) +
-  xlim(40, 80) + ylim(0, .17) +
+  xlim(35, 85) + ylim(0, .2) +
   labs(x="", y = "") +
   scale_fill_manual(values=c("blue", "red"))+
   theme(legend.position = 'none') 
@@ -94,7 +94,7 @@ ggplot(df_C, aes(x=m, fill = element_matrix)) +
 ggplot(df_H, aes(x=m, fill = element_matrix)) +
   geom_density(size=1.5, alpha=.4)+ 
   theme_minimal(base_size = 20, base_line_size = 15/20) +
-  xlim(40, 80) + ylim(0, .17) +
+  xlim(35, 85) + ylim(0, .2) +
   labs(x="", y = "") +
   scale_fill_manual(values=c("blue", "red"))+
   theme(legend.position = 'none') 

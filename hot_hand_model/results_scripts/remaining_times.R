@@ -2,7 +2,7 @@
 library(MCMCvis)
 library(rjags)
 
-load('rsamps_hot_hand_ft_re_all2.RData')
+load('./results/rsamps_hot_hand_ft_re_all2.RData')
 load('./data/matrix_data_ft_complete_season_all.RData')
 
 
