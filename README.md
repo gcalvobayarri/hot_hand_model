@@ -1,5 +1,5 @@
 # hot_hand_model
-SOFTWARE NEEDED: R AND JAGS. All codes are in R language.
+SOFTWARE NEEDED: R and JAGS. All codes are in R language.
 
 This folder contains the statistical analysis carried out in the paper "A Bayesian hidden Markov model for assessing the hot hand phenomenon in basketball shooting performance". The material available here is as follows.
 
