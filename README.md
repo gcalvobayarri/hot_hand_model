@@ -4,9 +4,9 @@ SOFTWARE NEEDED: R AND JAGS. All codes are in R language.
 This folder contains the statistical analysis carried out in the "A Bayesian hidden Markov model for assessing the hot hand phenomenon in basketball shooting performance" paper. The structure of this project is explained below:
 
 1. Folder "data": It includes three elements: MIA_all.RData, shots_MIA_all.RData, matrix_data_ft_complete_season_all.RDATA.
-	MIA_all.RData: a data frame of all the shots of the season.
-	shots_MIA_all.RData: a vector of the results of the shots, where 1 indicates a made shot and 0 indicates a missed shot.
-	matrix_data_ft_complete_season_all.RDATA: the response variable (matrix_tiros) and covariates (distance_matrix, ft) in the matricial format for the modelling.
+	1.1. MIA_all.RData: a data frame of all the shots of the season.
+	1.2. shots_MIA_all.RData: a vector of the results of the shots, where 1 indicates a made shot and 0 indicates a missed shot.
+	1.3. matrix_data_ft_complete_season_all.RDATA: the response variable (matrix_tiros) and covariates (distance_matrix, ft) in the matricial format for the modelling.
 
 2. Folder "documents": It contains a plot of the basketball court which is used in the shot chart.
 
