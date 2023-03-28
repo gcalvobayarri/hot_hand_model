@@ -80,15 +80,17 @@ plot(distance, apply(suc, 2, mean), type = 'l', ylim = c(0.0,1),
      cex.lab=1.5, cex.axis=1.5)
 polygon(c(distance,rev(distance)), 
         c(apply(suc, 2, quantile, probs = 0.025), rev(apply(suc, 2, quantile, probs = 0.975))), 
-        col = rgb(0, 0.8, .1,0.7), lwd=4, border=NA)
+        col = "#1F968BFF", lwd=4, border=NA)
+lines(distance, apply(suc, 2, mean), type = 'l', lty = 2)
 
 
-lines(distance, apply(suc_cold, 2, mean), type = 'l', lty = 2)
+
 polygon(c(distance,rev(distance)), 
         c(apply(suc_cold, 2, quantile, probs = 0.025), rev(apply(suc_cold, 2, quantile, probs = 0.975))), 
-        col = rgb(0, 0.1, .8,0.7), lwd=4, border=NA)
+        col = "#440154FF", lwd=4, border=NA)
+lines(distance, apply(suc_cold, 2, mean), type = 'l', lty = 2)
 
 polygon(c(distance,rev(distance)), 
         c(apply(suc_hot, 2, quantile, probs = 0.025), rev(apply(suc_hot, 2, quantile, probs = 0.975))), 
-        col = rgb(.8, 0.1, 0,0.7), lwd=4, border=NA)
+        col = "#FDE725FF", lwd=4, border=NA)
 lines(distance, apply(suc_hot, 2, mean), type = 'l', lty = 2)

@@ -36,7 +36,7 @@ mcmcplot(rsamps_hot_hand_ft_re_all2)
 summary(rsamps_hot_hand_ft_re_all2)$statistics[-(c(3 : 317)),]
 summary(rsamps_hot_hand_ft_re_all2)$quantiles[-(c(3 : 317)),]
 
-library(boot)
-
-inv.logit(0.0595)
-inv.logit(-0.278)
+# library(boot)
+# 
+# inv.logit(0.0595)
+# inv.logit(-0.278)

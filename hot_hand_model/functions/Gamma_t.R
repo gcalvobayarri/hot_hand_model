@@ -1,4 +1,4 @@
-# Transition probability matrix function t steps (KarlinTaylor formula)
+# Transition probability matrix function t steps. Page 33 Kulkarni.
 Gamma_t <- function(pCH, pHC, t){
   
   G_t <- 1 / (pCH + pHC) * matrix(c(pHC, pHC, pCH, pCH), nrow = 2) +

@@ -91,15 +91,6 @@ plot(1 : N, apply(suc, 2, mean), type = 'l', ylim = c(0.2,0.5),
      cex.lab=1.5, cex.axis=1.5)
 polygon(c(1 : N,rev(1 : N)), 
         c(apply(suc, 2, quantile, probs = 0.025), rev(apply(suc, 2, quantile, probs = 0.975))), 
-        col = rgb(0, 0.8, .1,0.7), lwd=4, border=NA)
+        col = "#1F968BFF", lwd=4, border=NA)
+lines(1 : N, apply(suc, 2, mean), type = 'l', lty = 2)
 
-
-# lines(1 : N, apply(suc_cold, 2, mean), type = 'l', lty = 2)
-# polygon(c(1 : N,rev(1 : N)), 
-#         c(apply(suc_cold, 2, quantile, probs = 0.025), rev(apply(suc_cold, 2, quantile, probs = 0.975))), 
-#         col = rgb(0, 0.1, .8,0.7), lwd=4, border=NA)
-# 
-# polygon(c(1 : N,rev(1 : N)), 
-#         c(apply(suc_hot, 2, quantile, probs = 0.025), rev(apply(suc_hot, 2, quantile, probs = 0.975))), 
-#         col = rgb(.8, 0.1, 0,0.7), lwd=4, border=NA)
-# lines(1 : N, apply(suc_hot, 2, mean), type = 'l', lty = 2)
