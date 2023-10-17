@@ -1,0 +1,70 @@
+model{
+  for (n in 1 : N){
+    for (t in 1: T[n]){
+      Y[n, t] ~ dbern(theta[n, t])
+      theta[n, t] <- exp(beta0[Z[n, t]] + betaft * ft[n, t] + 
+      beta_d * dist[n, t] + b[n]) / 
+      (1 + 
+      exp(beta0[Z[n, t]] + betaft * ft[n, t] + beta_d * dist[n, t] + 
+      b[n]))
+    }
+  }
+  
+  
+  ## PRIORS
+  
+  # beta prior
+    for (k in 1:2){
+    beta0.p[k] ~ dnorm(0, 0.01)
+  }
+  beta0[1] <- min(beta0.p[])
+  beta0[2] <- max(beta0.p[])
+
+  beta_d ~ dnorm(0, 0.01)
+  betaft ~ dnorm(0, 0.01)
+
+  for (n in 1 : N){
+    b[n] ~ dnorm(0, tau_b)
+  }
+  
+  tau_b <- 1 / (sigmab * sigmab)
+
+  sigmab ~ dunif(0, 10)
+  
+  # Z prior
+  for (n in 1 : N){
+    Z[n, 1] ~ dcat(delta0[])
+  }
+
+  delta0[1] ~ dbeta(1, 1)
+  delta0[2] <- 1 - delta0[1]
+  
+  for (n in 1 : N){
+    for (t in 2: T[n]){
+      Z[n, t] ~ dcat(omega[Z[n, t-1], , n])
+    }
+  }
+ 
+  for(n in 1 : N){
+    omega[1, 1, n] <- 1 - pCH[n]
+    omega[2, 2, n] <- 1 - pHC[n]
+    omega[1, 2, n] <- pCH[n]
+    omega[2, 1, n] <- pHC[n]
+
+    pCH[n] <- 1 / (1 + exp(-(PCH + bCH[n])))
+    pHC[n] <- 1 / (1 + exp(-(PHC + bHC[n])))
+
+    bCH[n] ~ dnorm(0, tauCH)
+    bHC[n] ~ dnorm(0, tauHC)
+  }
+
+  tauCH <- 1 / (sigmaCH * sigmaCH)
+  sigmaCH ~ dunif(0, 10)
+  PCH ~ dnorm(0, 0.01)
+
+  tauHC <- 1 / (sigmaHC * sigmaHC)
+  sigmaHC ~ dunif(0, 10)
+  PHC ~ dnorm(0, 0.01)
+
+
+}

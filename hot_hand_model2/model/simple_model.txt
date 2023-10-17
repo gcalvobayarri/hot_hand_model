@@ -1,0 +1,31 @@
+model{
+  for (n in 1 : N){
+    for (t in 1: T[n]){
+      Y[n, t] ~ dbern(theta[n, t])
+      theta[n, t] <- exp(beta0 + betaft * ft[n, t] + 
+      beta_d * dist[n, t] + b[n]) / 
+      (1 + 
+      exp(beta0 + betaft * ft[n, t] + beta_d * dist[n, t] + 
+      b[n]))
+    }
+  }
+  
+  
+  ## PRIORS
+  
+  # beta prior
+
+  beta0 ~ dnorm(0, 0.01)
+  beta_d ~ dnorm(0, 0.01)
+  betaft ~ dnorm(0, 0.01)
+
+  for (n in 1 : N){
+    b[n] ~ dnorm(0, tau_b)
+  }
+  
+  tau_b <- 1 / (sigmab * sigmab)
+
+  sigmab ~ dunif(0, 10)
+
+
+}
