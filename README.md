@@ -1,7 +1,7 @@
 # hot_hand_model
 SOFTWARE NEEDED: R and JAGS. All codes are in R language.
 
-This folder contains the statistical analysis carried out in the paper "A Bayesian hidden Markov model for assessing the hot hand phenomenon in basketball shooting performance". The material available here is as follows.
+This folder contains the statistical analysis carried out in the paper "Can the hot hand phenomenon be modelled? A Bayesian hidden Markov approach". The material available here is as follows.
 
 1. Folder "data": it includes three elements, i. e., MIA_all.RData, shots_MIA_all.RData, matrix_data_ft_complete_season_all.RDATA.
 	MIA_all.RData: a data frame of all the shots of the season.
