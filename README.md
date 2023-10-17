@@ -36,5 +36,6 @@ This folder contains the statistical analysis carried out in the paper "Can the 
 	* modelization_simple.R: code for computing the JAGS simplest model and seeing the posterior results.
 	* rhat.R: rhat of the chains (see Table 1).
 	* shot_chart2.R: code for Figure 1 (shot chart).
+ * 
 In addition, it contains the CPO folder.
           
