@@ -1,39 +1,38 @@
 # 1. Probabilities of shots depending on distances--------------
 library(MCMCvis)
 library(rjags)
-library(scales)
 
-load('./results/rsamps_hot_hand_ft_re_all2_v2.RData')
+load('./results/rsamps_hot_hand_TOR.RData')
 
-beta0C <- as.vector(unlist(MCMCchains(rsamps_hot_hand_ft_re_all2, 
+beta0C <- as.vector(unlist(MCMCchains(rsamps_hot_hand_TOR, 
                                       params = 'beta0[1]', ISB = F)))
 
 
-beta0H <- as.vector(unlist(MCMCchains(rsamps_hot_hand_ft_re_all2, 
+beta0H <- as.vector(unlist(MCMCchains(rsamps_hot_hand_TOR, 
                                       params = 'beta0[2]', ISB = F)))
 
-sigmab <- as.vector(unlist(MCMCchains(rsamps_hot_hand_ft_re_all2, 
+sigmab <- as.vector(unlist(MCMCchains(rsamps_hot_hand_TOR, 
                                       params = 'sigmab', ISB = F)))
 
-betad <- as.vector(unlist(MCMCchains(rsamps_hot_hand_ft_re_all2, 
+betad <- as.vector(unlist(MCMCchains(rsamps_hot_hand_TOR, 
                                      params = 'beta_d', ISB = F)))
 
 distance <- seq(from = 0, to = 27, by = 0.1)
 
 
-betaCH <- as.vector(unlist(MCMCchains(rsamps_hot_hand_ft_re_all2, 
+betaCH <- as.vector(unlist(MCMCchains(rsamps_hot_hand_TOR, 
                                       params = 'PCH', ISB = F)))
 
 
-betaHC <- as.vector(unlist(MCMCchains(rsamps_hot_hand_ft_re_all2, 
+betaHC <- as.vector(unlist(MCMCchains(rsamps_hot_hand_TOR, 
                                       params = 'PHC', ISB = F)))
 
-sigmaCH <- as.vector(unlist(MCMCchains(rsamps_hot_hand_ft_re_all2, 
+sigmaCH <- as.vector(unlist(MCMCchains(rsamps_hot_hand_TOR, 
                                        params = 'sigmaCH', ISB = F)))
 
 
 
-sigmaHC <- as.vector(unlist(MCMCchains(rsamps_hot_hand_ft_re_all2, 
+sigmaHC <- as.vector(unlist(MCMCchains(rsamps_hot_hand_TOR, 
                                        params = 'sigmaHC', ISB = F)))
 
 niter <- length(betaCH)

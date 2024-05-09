@@ -2,22 +2,22 @@
 library(MCMCvis)
 library(rjags)
 
-load('./results/rsamps_hot_hand_ft_re_all2_v2.RData')
+load('./results/rsamps_hot_hand_TOR.RData')
 
 
-betaCH <- as.vector(unlist(MCMCchains(rsamps_hot_hand_ft_re_all2, 
+betaCH <- as.vector(unlist(MCMCchains(rsamps_hot_hand_TOR, 
                                       params = 'PCH', ISB = F)))
 
 
-betaHC <- as.vector(unlist(MCMCchains(rsamps_hot_hand_ft_re_all2, 
+betaHC <- as.vector(unlist(MCMCchains(rsamps_hot_hand_TOR, 
                                       params = 'PHC', ISB = F)))
 
-sigmaCH <- as.vector(unlist(MCMCchains(rsamps_hot_hand_ft_re_all2, 
+sigmaCH <- as.vector(unlist(MCMCchains(rsamps_hot_hand_TOR, 
                                        params = 'sigmaCH', ISB = F)))
 
 
 
-sigmaHC <- as.vector(unlist(MCMCchains(rsamps_hot_hand_ft_re_all2, 
+sigmaHC <- as.vector(unlist(MCMCchains(rsamps_hot_hand_TOR, 
                                        params = 'sigmaHC', ISB = F)))
 
 niter <- length(betaCH)

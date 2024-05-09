@@ -2,23 +2,23 @@
 library(MCMCvis)
 library(rjags)
 
-load('./results/rsamps_hot_hand_ft_re_all2_v2.RData')
-load('./data/matrix_data_ft_complete_season_all2.RData')
+load('./results/rsamps_hot_hand_CHI.RData')
+load('./data/matrix_data_CHI.RData')
 
 
-betaCH <- as.vector(unlist(MCMCchains(rsamps_hot_hand_ft_re_all2, 
+betaCH <- as.vector(unlist(MCMCchains(rsamps_hot_hand_CHI, 
                                       params = 'PCH', ISB = F)))
 
 
-betaHC <- as.vector(unlist(MCMCchains(rsamps_hot_hand_ft_re_all2, 
+betaHC <- as.vector(unlist(MCMCchains(rsamps_hot_hand_CHI, 
                                       params = 'PHC', ISB = F)))
 
-sigmaCH <- as.vector(unlist(MCMCchains(rsamps_hot_hand_ft_re_all2, 
+sigmaCH <- as.vector(unlist(MCMCchains(rsamps_hot_hand_CHI, 
                                        params = 'sigmaCH', ISB = F)))
 
 
 
-sigmaHC <- as.vector(unlist(MCMCchains(rsamps_hot_hand_ft_re_all2, 
+sigmaHC <- as.vector(unlist(MCMCchains(rsamps_hot_hand_CHI, 
                                        params = 'sigmaHC', ISB = F)))
 
 niter <- length(betaCH)
@@ -37,7 +37,7 @@ pCC <- 1 - pCH
 pHH <- 1 - pHC
 
 
-mshot <- max(tiros_por_partido)
+mshot <- max(tiros_CHI_partido)
 niter <- length(pCH)
 
 tiempo_permanencia_hot <- matrix(data = NA, nrow = mshot, ncol = niter)
@@ -58,7 +58,7 @@ library(ggplot2)
 
 
 ggplot(df_remaining_time_gr3, aes(x = par, y = iter, fill = par)) +
-  geom_violin(alpha = .8)+ 
+  geom_violin(alpha = .7)+ 
   scale_fill_manual(values=c("#440154FF", "#FDE725FF")) +
   geom_boxplot(width=0.1, fill="white") +
   theme_minimal(base_size = 20, base_line_size = 15/20)+

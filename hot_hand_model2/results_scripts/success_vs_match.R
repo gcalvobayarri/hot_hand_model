@@ -1,9 +1,10 @@
 # 1. Probabilities of shots depending on distances--------------
 library(MCMCvis)
 library(rjags)
+library(scales)
 
-load('./results/rsamps_hot_hand_ft_re_all2.RData')
-load('./data/matrix_data_ft_complete_season_all.RData')
+load('./results/rsamps_hot_hand_ft_re_all2_V2.RData')
+load('./data/matrix_data_ft_complete_season_all2.RData')
 N <- length(tiros_por_partido)
 
 
@@ -91,6 +92,6 @@ plot(1 : N, apply(suc, 2, mean), type = 'l', ylim = c(0.2,0.5),
      cex.lab=1.5, cex.axis=1.5)
 polygon(c(1 : N,rev(1 : N)), 
         c(apply(suc, 2, quantile, probs = 0.025), rev(apply(suc, 2, quantile, probs = 0.975))), 
-        col = "#1F968BFF", lwd=4, border=NA)
+        col = alpha("#1F968BFF",0.8), lwd=4, border=NA)
 lines(1 : N, apply(suc, 2, mean), type = 'l', lty = 2)
 
