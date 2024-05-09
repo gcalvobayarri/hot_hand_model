@@ -1,13 +1,47 @@
-load('./data/MIA_all.RData')
+#1. Extracting data for TOR----------
+
+load('./data/shots_TOR.RData')
+
+data_shots_TOR$original_x[is.na(data_shots_TOR$original_x)] <- ""
+data_shots_TOR$original_y[is.na(data_shots_TOR$original_y)] <- ""
+
+data_shots_TOR$xx <- as.numeric(data_shots_TOR$original_x)/10
+data_shots_TOR$yy <- as.numeric(data_shots_TOR$original_y)/10-41.75
+
+data_shots_TOR[is.na(data_shots_TOR)] <- ""
+data_shots_TOR$shot_distance[data_shots_TOR$shot_distance == ""] <- 15
+
+#2. Numeric results-------------
+
+shots_TOR <- as.vector(data_shots_TOR$result)
+class(shots_TOR)
+shots_TOR <- as.factor(shots_TOR)
+library(plyr)
+shots_TOR <- revalue(shots_TOR, c("made"=1, "missed"=0))
+shots_TOR <- as.numeric(shots_TOR)
+shots_TOR[shots_TOR==2] <- 0
+
+
+data_shots_TOR <- data.frame(data_shots_TOR, numeric_res = shots_TOR)
+
+#3. numeric id match---------------
+match_id <- as.vector(data_shots_TOR$game_id)
+match_id <- as.factor(match_id)
+match_id <- as.numeric(match_id)
+
+data_shots_TOR <- data.frame(data_shots_TOR, match_id = match_id)
+
+
+# 2. Plot------------------
 # install.packages("viridis")
 library(viridis)
 library(ggplot2)
 library(png)
 library(ggpubr)
 img <- readPNG("./documents/field.png")
-shots <- na.omit(subset(s2005.PbP.MIA, select = c('result', 'xx', 'yy')))
+shots <- na.omit(subset(data_shots_TOR, select = c('result', 'xx', 'yy')))
 shots <- rbind(shots, c('', 0, - 41.75))
-shots$result <- as.factor(as.numeric(shots$result))
+shots$result <- as.factor(shots$result)
 shots$result <- factor(shots$result, labels = c('Basket', 'Shot made', 'Shot missed'))
 shots$xx <- as.numeric(shots$xx)
 shots$yy <- as.numeric(shots$yy)
@@ -26,9 +60,8 @@ ggplot(data = shots, aes(xx, yy))+ background_image(img) +
         axis.title.y = element_blank(),
         legend.title = element_blank(),
         legend.position="right")+
-annotate("point", x = 0, y = -41.75, colour = "red", size = 8, alpha = 0.5)  #+
+  annotate("point", x = 0, y = -41.75, colour = "red", size = 8, alpha = 0.5)  #+
 # annotate("point", x = 0, y = 0, colour = "blue") +
 # annotate("point", x = -22, y = -41.75, colour = "blue") +
 # annotate("point", x = 22, y = -41.75, colour = "blue")
-
 

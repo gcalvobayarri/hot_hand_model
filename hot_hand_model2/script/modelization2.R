@@ -26,7 +26,16 @@ update(result, n.iter = 30000)
 rsamps_hot_hand_ft_re_all2 <- coda.samples(result, parameters, n.iter = 30000, 
                                            thin = 30)
 
-save(rsamps_hot_hand_ft_re_all2, file = './results/pruebas/rsamps_hot_hand_ft_re_all2_v2.RData')
+DIC_MIA<- dic.samples(result, 50000, thin = 50, type='pD') # penalized
+
+WAIC_MIA <- jags.samples(result, c("deviance", "WAIC"), type="mean", 
+                         n.iter=50000, thin=50)
+
+MIA_WAIC <- sum(WAIC_MIA$deviance) + sum(WAIC_MIA$WAIC)
+
+
+save(MIA_WAIC, rsamps_hot_hand_ft_re_all2, file = './results/rsamps_hot_hand_ft_re_all2_v2.RData')
+# load('./results/rsamps_hot_hand_ft_re_all2_v2.RData')
 
 mcmcplot(rsamps_hot_hand_ft_re_all2)
 

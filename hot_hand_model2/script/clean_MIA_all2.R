@@ -15,7 +15,7 @@ df_ft <- sqldf("SELECT * FROM data_shots_MIA WHERE type  LIKE '%Free Throw%'")
 
 data_shots_MIA$ft <- 0
 
-for(i in 1 : 3021){
+for(i in 1 : length(df_ft[,1])){
   data_shots_MIA$ft[df_ft$id[i]] <- 1
 }
 
